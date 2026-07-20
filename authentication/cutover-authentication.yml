@@ -1,0 +1,40 @@
+generated: '2026-07-18'
+method: searched
+source: https://developer.cutover.com/cutover-api/authentication
+docs: https://developer.cutover.com/cutover-api/authentication
+summary:
+  types:
+  - http
+  http_schemes:
+  - bearer
+  oauth2_flows: []
+  api_key_in: []
+  model: role-based access control (no OAuth scopes)
+schemes:
+- name: userAppToken
+  type: http
+  scheme: bearer
+  bearerFormat: opaque-48-char-token
+  location: header
+  header: Authorization
+  format: 'Authorization: Bearer <user_app_token>'
+  description: >-
+    Authentication is performed via bearer authentication using a User App Token,
+    a 48-character (192-bit) opaque string. Tokens are created in the Cutover
+    application under Access Management for a non-interactive user that holds the
+    Developer role plus any additional roles required for the calls it makes.
+    The token is displayed only once at creation and can be revoked or set to
+    expire by a Global User Admin.
+authorization:
+  model: rbac
+  notes: >-
+    There is no OAuth or scopes system. Access is governed by role-based access
+    control: the non-interactive user behind a token must hold the Developer role
+    plus the specific additional roles (e.g. Workspace Manager, Integrations Admin,
+    Global User Admin) needed for the resources it touches. A 403 Forbidden is
+    returned when the token's roles are insufficient.
+token_management:
+  created_in: Access Management > User > User App Tokens
+  display: shown once at creation
+  expiry: configurable (arranged via Customer Success Manager)
+  revocation: Global User Admin can revoke tokens
