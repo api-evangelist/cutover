@@ -1,0 +1,84 @@
+generated: '2026-07-18'
+method: searched
+source: https://developer.cutover.com/cutover-api
+docs:
+- https://developer.cutover.com/cutover-api
+- https://developer.cutover.com/cutover-api/authentication
+- https://developer.cutover.com/cutover-api/versioning
+- https://developer.cutover.com/cutover-api/error-codes
+api_style: REST (JSON:API-influenced)
+base_url:
+  pattern: https://api.[cutover_instance_name].cutover.com/core
+  example_instance: https://api.cutover.net/core
+  mcp_default: https://api.cutover.com
+  note: >-
+    The API base URL is instance-specific; the instance name is part of the host.
+    All Core API paths are prefixed with /core.
+media_type: application/json
+authentication:
+  style: bearer User App Token in the Authorization header
+  ref: authentication/cutover-authentication.yml
+request_envelope:
+  shape: JSON:API-style
+  example:
+    data:
+      type: user
+      attributes: {}
+  notes: >-
+    Write requests wrap the resource in a data object with type and attributes;
+    some requests also carry a top-level meta object (e.g. invitation metadata on
+    user creation).
+response_envelope:
+  shape: JSON:API-style
+  notes: >-
+    Resources are returned with type/attributes; identifiers are JSON:API-compliant
+    string values (e.g. task_links[].id returns strings).
+pagination:
+  style: page-number
+  params:
+  - name: page
+    in: query
+    description: Page of results to return
+  response_links: last-page link is always present, including on the final page
+field_expansion:
+  supported: true
+  param: include
+  examples:
+  - include=assignees
+  note: >-
+    Related resources can be side-loaded via the include query parameter on
+    supported endpoints (e.g. GET /core/runbooks/{runbook_id}/tasks?include=assignees).
+filtering:
+  supported: true
+  examples:
+  - stage filter on GET /core/runbooks/{runbook_id}/tasks (e.g. in_progress, not_startable)
+  - global=true to combine workspace-scoped and global resources (task_types, runbook_types, custom_fields)
+versioning:
+  scheme: date-based
+  example: '2022-02-22'
+  header: Api-Version
+  default: account default version when header omitted
+  core_version_gating: >-
+    Individual parameters/endpoints may require a minimum Cutover Core version,
+    stated in the parameter description (e.g. core_version >= v2026.13.0).
+  ref: lifecycle/cutover-lifecycle.yml
+error_envelope:
+  shape: JSON:API errors[]
+  format: 'errors[]: {title, detail, code}'
+  guidance: use the machine-readable code field for programmatic mapping; title/detail may change or be translated
+  ref: errors/cutover-problem-types.yml
+rate_limiting:
+  signaled: true
+  status_code: 429
+  note: >-
+    Requests from a token or IP can be rate limited, returning 429 Too Many Requests.
+    Specific numeric limits are not published in the developer documentation.
+idempotency:
+  supported: false
+  note: >-
+    No idempotency-key header or idempotent-retry contract is documented for the
+    Cutover Core API as of this capture.
+webhooks:
+  supported: true
+  direction: outbound (Event Integrations)
+  ref: asyncapi/cutover-events-webhooks.yml

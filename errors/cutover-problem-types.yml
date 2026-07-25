@@ -1,0 +1,54 @@
+generated: '2026-07-18'
+method: searched
+source: https://developer.cutover.com/cutover-api/error-codes
+docs: https://developer.cutover.com/cutover-api/error-codes
+format: json-api-errors
+envelope:
+  field: errors
+  shape: 'errors[]: {title, detail, code}'
+  guidance: >-
+    Use the machine-readable code field for programmatic error handling; title and
+    detail are human-readable and may change or be translated in future versions.
+notes: >-
+  Cutover returns standard HTTP status codes and, for 4xx responses, a JSON body
+  with an errors[] array (JSON:API-style). This is NOT RFC 9457 problem+json.
+problems:
+- status: 200
+  title: OK
+  meaning: Successful request
+- status: 201
+  title: Created
+  meaning: Successful resource creation
+- status: 400
+  title: Bad Request
+  meaning: The URL, header, or request body has invalid syntax or is malformed.
+- status: 401
+  title: Unauthorized
+  meaning: Check the bearer authentication token is correct.
+- status: 403
+  title: Forbidden
+  meaning: The permissions associated with the token are not sufficient to access this resource.
+- status: 404
+  title: Not Found
+  meaning: The resource requested or a dependent resource is not accessible (never existed, archived or deleted).
+- status: 405
+  title: Method Not Allowed
+  meaning: This endpoint has not been implemented yet in the API.
+- status: 422
+  title: Unprocessable Entity
+  meaning: The request was understood but could not be fulfilled due to validation rules.
+- status: 429
+  title: Too Many Requests
+  meaning: Requests from this token or IP have been rate limited.
+- status: 500
+  title: Internal Server Error
+  meaning: An unexpected error within the Cutover API.
+- status: 501
+  title: Not Implemented
+  meaning: Usually a sign that the Core application is not up to date.
+- status: 503
+  title: Service Unavailable
+  meaning: Could not connect the upstream application (typically Core).
+- status: 504
+  title: Gateway Timeout
+  meaning: Core application exists but is timing out.

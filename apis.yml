@@ -1,8 +1,28 @@
 aid: cutover
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/cutover.png
 name: Cutover
-description: 'Cutover is a company surfaced as a portfolio company of index-ventures, techstars and added
-  to the API Evangelist network as a stub for enrichment. Sector: business-applications. This profile
-  is a lead awaiting the enrichment pipeline.'
+description: 'Cutover is a collaborative automation and IT resilience platform that
+  codifies operational work as task-led runbooks for IT disaster recovery, application
+  recovery, major incident management, and complex change and release events. The
+  platform combines automated runbooks, real-time dashboards, immutable audit trails,
+  and AI-assisted orchestration to reduce mean time to resolution and meet recovery
+  time objectives across hybrid and multi-cloud estates. Cutover exposes a RESTful
+  Core API (JSON:API-style envelopes, bearer User App Token authentication) for programmatically
+  managing workspaces, runbooks, tasks, teams, and users, plus outbound event/webhook
+  integrations, an open-source MCP server, and a broad third-party integration suite
+  (ServiceNow, Jira, Datadog, AWS, Ansible, Jenkins, Slack, Microsoft Teams and more).'
 url: https://raw.githubusercontent.com/api-evangelist/cutover/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -13,16 +33,105 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-18'
 tags:
 - Company
 - Business Applications
-apis: []
+- IT Operations
+- Disaster Recovery
+- Incident Management
+- Runbook Automation
+- Orchestration
+- Workflow Automation
+- DevOps
+apis:
+- name: Cutover Core API
+  description: 'The Cutover Core API is a RESTful, JSON:API-style interface for programmatically
+    managing workspaces, runbooks, tasks, teams, and users in the Cutover collaborative
+    automation platform. It uses predictable resource-oriented URLs, standard HTTP
+    methods (GET, POST, PATCH, DELETE), bearer User App Token authentication, date-based
+    API versioning via an Api-Version header, page-based pagination, and a JSON:API
+    errors[] envelope. It powers runbook creation from templates, task orchestration,
+    user and team administration, and integration-driven automation.'
+  humanURL: https://developer.cutover.com/cutover-api
+  baseURL: https://api.cutover.com/core
+  tags:
+  - Runbook Automation
+  - IT Operations
+  - Orchestration
+  properties:
+  - type: Documentation
+    url: https://developer.cutover.com/cutover-api
+  - type: APIReference
+    url: https://developer.cutover.com/endpoints
+  - type: GettingStarted
+    url: https://developer.cutover.com/cutover-api/developer-role
+  - type: Authentication
+    url: https://developer.cutover.com/cutover-api/authentication
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: TrustCenter
+  url: security/cutover-trust-center.yml
 - type: Website
-  url: http://cutover.com
+  url: https://cutover.com
+- type: DeveloperPortal
+  url: https://developer.cutover.com
+- type: Documentation
+  url: https://developer.cutover.com/cutover-api
+- type: APIReference
+  url: https://developer.cutover.com/endpoints
+- type: GettingStarted
+  url: https://developer.cutover.com/cutover-api/developer-role
+- type: Support
+  url: https://developer.cutover.com/support
+- type: HelpCenter
+  url: https://help.cutover.com/en/
+- type: Blog
+  url: https://cutover.com/blog-and-news
+- type: GitHubOrganization
+  url: https://github.com/gocutover
+- type: Pricing
+  url: https://cutover.com/pricing
+- type: TermsOfService
+  url: https://cutover.com/terms-and-conditions
+- type: PrivacyPolicy
+  url: https://cutover.com/privacy-notice
+- type: Integrations
+  url: https://developer.cutover.com/integrations
+- type: ChangeLog
+  url: https://developer.cutover.com/updates
+- type: ChangeLog
+  url: changelog/cutover-changelog.yml
+- type: MCPServer
+  url: mcp/cutover-mcp.yml
+- type: Authentication
+  url: authentication/cutover-authentication.yml
+- type: Conventions
+  url: conventions/cutover-conventions.yml
+- type: ErrorCatalog
+  url: errors/cutover-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/cutover-lifecycle.yml
+- type: DataModel
+  url: data-model/cutover-data-model.yml
+- type: Conformance
+  url: conformance/cutover-conformance.yml
+- type: Compliance
+  url: https://cutover.com/security
+- type: Security
+  url: https://cutover.com/security
+- type: DomainSecurity
+  url: security/cutover-domain-security.yml
+- type: Webhooks
+  url: asyncapi/cutover-events-webhooks.yml
+- type: LLMsTxt
+  url: llms/cutover-llms.txt
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

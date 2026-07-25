@@ -1,0 +1,74 @@
+generated: '2026-07-18'
+method: searched
+status: published
+source: https://developer.cutover.com/cutovers-mcp-server
+repository: https://github.com/gocutover/cutover-mcp-public
+license: MIT
+server:
+  name: cutover-mcp
+  transport: stdio
+  runtime: python
+  run: uv run python src/cutover_mcp/server.py
+  clients:
+  - Claude Desktop
+  - VS Code GitHub Copilot
+  docker: true
+auth:
+  type: bearer
+  env:
+  - name: CUTOVER_BASE_URL
+    example: https://api.cutover.com
+  - name: CUTOVER_API_TOKEN
+    description: Cutover User App Token with appropriate role permissions
+  - name: CUTOVER_CORE_URL
+    description: Optional Core-Url header for the Cutover MCP
+notes: >-
+  Open-source, self-hosted (local/stdio) MCP server published by Cutover. Wraps the
+  Cutover Core REST API; tools below are the tool functions exposed by the public
+  repository's src/cutover_mcp/tools/ modules (verified against the repo tree on the
+  refs/heads/main branch).
+tools:
+- name: list_workspaces
+  description: List workspaces available to the authenticated token
+- name: query_workspaces
+  description: Query workspaces by criteria
+- name: get_workspace_by_id
+  description: Retrieve a single workspace by id
+- name: create_workspace
+  description: Create a new workspace
+- name: list_runbooks
+  description: List runbooks in a workspace
+- name: create_runbook
+  description: Create a runbook (including copying from a template)
+- name: manage_runbook
+  description: Start, pause, or otherwise control a runbook's lifecycle
+- name: update_runbook
+  description: Update runbook attributes
+- name: get_runbook_teams
+  description: List the teams attached to a runbook
+- name: get_runbook_template_copies
+  description: List runbooks copied from a given template
+- name: start_task
+  description: Start a task within a runbook
+- name: complete_task
+  description: Mark a task as complete
+- name: skip_task
+  description: Skip a task within a runbook
+- name: delete_task
+  description: Delete a task from a runbook
+- name: list_task_types
+  description: List available task types
+- name: delete_stream
+  description: Delete a stream (task grouping) from a runbook
+- name: list_custom_fields
+  description: List custom fields
+- name: get_custom_field
+  description: Retrieve a single custom field
+- name: get_action_logs
+  description: Retrieve action/audit logs
+- name: get_activities
+  description: Retrieve activity history
+- name: get_user
+  description: Retrieve a single user
+- name: search_users
+  description: Search users

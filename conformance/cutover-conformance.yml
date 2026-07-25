@@ -1,0 +1,49 @@
+generated: '2026-07-18'
+method: searched
+source:
+- https://developer.cutover.com/cutover-api
+- https://developer.cutover.com/cutover-api/error-codes
+- https://cutover.com/security
+standards:
+- id: json-api
+  conforms: partial
+  evidence: >-
+    Requests/responses use JSON:API-style envelopes (data.type/data.attributes,
+    errors[] with title/detail/code, JSON:API-compliant string identifiers), though
+    the docs do not claim full JSON:API 1.x compliance.
+- id: oauth2
+  conforms: false
+  evidence: authentication is bearer User App Token with RBAC; no OAuth2 flows
+- id: openid-connect
+  conforms: false
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: errors use a JSON:API errors[] envelope, not application/problem+json
+- id: rfc8594-sunset-header
+  conforms: false
+  evidence: no documented Sunset/Deprecation header support
+- id: pagination
+  conforms: true
+  evidence: page-number pagination via the page query parameter
+- id: idempotency
+  conforms: false
+  evidence: no documented idempotency-key contract
+- id: soc2
+  conforms: true
+  evidence: SOC 2 Type II attested (https://cutover.com/security)
+- id: iso-27001
+  conforms: true
+  evidence: ISO/IEC 27001:2022 certified (https://cutover.com/security)
+- id: nist-csf
+  conforms: true
+  evidence: aligns to the NIST Cybersecurity Framework (https://cutover.com/security)
+- id: gdpr
+  conforms: true
+  evidence: GDPR compliant with DPIA/DPA; ICO registration ZA152033 (https://cutover.com/security)
+compliance_program:
+  url: https://cutover.com/security
+  certifications:
+  - SOC 2 Type II
+  - ISO/IEC 27001:2022
+  - NIST CSF
+  - GDPR

@@ -1,0 +1,27 @@
+generated: '2026-07-18'
+method: searched
+source: https://developer.cutover.com/updates
+docs: https://developer.cutover.com/updates
+scheme: date-based API versions (Api-Version header, e.g. 2022-02-22); features gated by minimum Cutover Core version
+window: recent
+entries:
+- date: '2026-06-26'
+  highlights:
+  - 'New endpoint: GET /core/data_sources/upload_url generates pre-signed upload URLs for data source file uploads (requires core_version >= v2026.13.0).'
+  - 'Updated: PATCH /core/runbooks/{runbook_id}/tasks/{id} now returns 422 Unprocessable Entity when invalid user or team IDs are supplied during task assignment (core_version >= v2026.13.0).'
+  breaking: false
+  additions: true
+- date: '2026-06-17'
+  highlights:
+  - 'GET /core/task_types, GET /core/runbook_types, and GET /core/custom_fields now support combined workspace-scoped and global resources via global=true (core_version >= v2026.13.0).'
+  - 'Custom field addition: "incident_summary" added to core.custom_field.attributes.apply_to enum (core_version >= v2026.12.0).'
+  - 'GET /core/runbooks/{runbook_id}/tasks stage filter now supports underscored values (e.g. in_progress) and a not_startable stage value.'
+  breaking: false
+  additions: true
+- date: '2026-06-03'
+  highlights:
+  - 'GET /core/runbooks/{runbook_id}/tasks now supports include=assignees (core_version >= v2026.10.0).'
+  - 'New read-only attribute core.user.attributes.name (user full display name, core_version >= v2026.10.0).'
+  - 'Schema consistency: core.task.attributes.task_links[].id now returns JSON:API-compliant string values.'
+  breaking: false
+  additions: true

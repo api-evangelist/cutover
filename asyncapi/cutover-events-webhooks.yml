@@ -1,0 +1,35 @@
+generated: '2026-07-18'
+method: searched
+source: https://developer.cutover.com/event-integrations
+docs: https://developer.cutover.com/event-integrations
+type: Webhooks
+spec_type: none
+note: >-
+  Cutover documents outbound webhooks ("Event Integrations") that deliver real-time
+  notifications when specific events occur, but does not publish an AsyncAPI document.
+  This artifact captures the webhook surface only. No AsyncAPI spec is fabricated.
+direction: outbound
+configuration:
+  ui: Settings (cog, bottom right) > Event Integrations
+  required_role: Integrations Admin
+  fields:
+  - enabled status
+  - name
+  - endpoint URL
+  - deliveries count
+  - trigger events
+  observability:
+  - subscriptions view
+  - message logs (delivery debugging)
+event_categories:
+- category: task
+  description: Task-related events (see "Event Payload Examples - Task")
+  payload_examples_docs: https://developer.cutover.com/event-integrations
+- category: runbook
+  description: Runbook-related events (see "Event Payload Examples - Runbook")
+  payload_examples_docs: https://developer.cutover.com/event-integrations
+- category: integration
+  description: Integration failure during a live runbook
+payload:
+  format: json
+  note: Named per-event payload schemas are documented on the Event Payload Examples pages; exact event-name enumeration not published in a single machine-readable list.

@@ -1,0 +1,31 @@
+generated: '2026-07-18'
+method: searched
+source: https://developer.cutover.com/cutover-api/versioning
+versioning:
+  scheme: date-based
+  example_version: '2022-02-22'
+  selector_header: Api-Version
+  default: account default version applies when the Api-Version header is omitted
+  docs: https://developer.cutover.com/cutover-api/versioning
+  purpose: date-based versions track breaking changes, released independently of the Cutover Core version
+core_version_gating:
+  described: true
+  note: >-
+    Individual endpoints/parameters require a minimum Cutover Core version, stated
+    in the parameter description (e.g. core_version >= v2026.13.0). Core is the
+    upstream application the API fronts.
+deprecation:
+  policy_url: null
+  sunset_header: unknown
+  note: >-
+    No formal deprecation policy or RFC 8594 Sunset/Deprecation header support is
+    documented; the /updates changelog is the source of truth for change tracking.
+status_page: null
+sla:
+  url: null
+  note: >-
+    Uptime/SLA commitments are handled through the commercial agreement (Master
+    Subscription Agreement) and Premium Support (24/7/365, 15-minute critical
+    response), not a public status page.
+changelog: https://developer.cutover.com/updates
+deprecated_operations: []

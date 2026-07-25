@@ -1,0 +1,118 @@
+generated: '2026-07-18'
+method: derived
+source: https://developer.cutover.com/endpoints
+docs: https://developer.cutover.com/cutover-api
+note: >-
+  Derived from the documented Cutover Core API resources and example request/response
+  bodies (no published OpenAPI to parse). Relationships reflect the documented
+  resource-oriented URL hierarchy and id-reference fields.
+entities:
+- name: workspace
+  description: Top-level container that groups runbooks and scopes resources and roles
+  identifier: id (string)
+  endpoints:
+  - GET /core/workspaces
+  - GET /core/workspaces/{id}
+- name: runbook
+  description: A codified plan of work composed of tasks; often created by copying a runbook template
+  identifier: id (string)
+  endpoints:
+  - GET /core/runbooks
+  - POST /core/runbooks
+- name: runbook_type
+  description: Classification of a runbook (workspace-scoped or global)
+  endpoints:
+  - GET /core/runbook_types
+- name: task
+  description: A unit of work within a runbook, with stage, assignees, links, and custom fields
+  identifier: id (string)
+  endpoints:
+  - GET /core/runbooks/{runbook_id}/tasks
+  - GET /core/runbooks/{runbook_id}/tasks/{id}
+  - POST /core/runbooks/{runbook_id}/tasks
+  - PATCH /core/runbooks/{runbook_id}/tasks/{id}
+- name: task_type
+  description: Classification of a task (workspace-scoped or global)
+  endpoints:
+  - GET /core/task_types
+- name: stream
+  description: A grouping of tasks within a runbook
+- name: team
+  description: A runbook team that tasks can be assigned to
+  endpoints:
+  - runbook teams (via runbook)
+- name: user
+  description: A person or non-interactive account with roles; assignable to tasks and teams
+  identifier: id (string)
+  endpoints:
+  - GET /core/users
+  - POST /core/users
+- name: role_type
+  description: A role that can be granted to a user, optionally scoped to a resource (e.g. workspace)
+  endpoints:
+  - GET /core/role_types
+- name: custom_field
+  description: Configurable field applied to tasks/runbooks; apply_to enum controls where it appears
+  endpoints:
+  - GET /core/custom_fields
+- name: user_app_token
+  description: Bearer token belonging to a user, used for API authentication
+  endpoints:
+  - List User App Tokens (per user)
+- name: data_source
+  description: Uploadable data source backing runbook content
+  endpoints:
+  - GET /core/data_sources/upload_url
+relationships:
+- from: runbook
+  to: workspace
+  type: belongs_to
+  via: workspace
+- from: workspace
+  to: runbook
+  type: has_many
+  via: runbooks
+- from: task
+  to: runbook
+  type: belongs_to
+  via: runbook_id
+- from: runbook
+  to: task
+  type: has_many
+  via: tasks
+- from: task
+  to: stream
+  type: belongs_to
+  via: stream
+- from: task
+  to: user
+  type: has_many
+  via: assignees
+- from: task
+  to: team
+  type: has_many
+  via: runbook_teams
+- from: user
+  to: role_type
+  type: has_many
+  via: roles_attributes.role_type_id
+- from: role_type
+  to: workspace
+  type: belongs_to
+  via: resource_id (resource_type=workspace)
+- from: user
+  to: user_app_token
+  type: has_many
+  via: user_app_tokens
+- from: runbook
+  to: runbook_type
+  type: belongs_to
+  via: runbook_type
+- from: task
+  to: task_type
+  type: belongs_to
+  via: task_type
+- from: task
+  to: custom_field
+  type: has_many
+  via: custom_fields
