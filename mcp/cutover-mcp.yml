@@ -22,11 +22,9 @@ auth:
     description: Cutover User App Token with appropriate role permissions
   - name: CUTOVER_CORE_URL
     description: Optional Core-Url header for the Cutover MCP
-notes: >-
-  Open-source, self-hosted (local/stdio) MCP server published by Cutover. Wraps the
-  Cutover Core REST API; tools below are the tool functions exposed by the public
-  repository's src/cutover_mcp/tools/ modules (verified against the repo tree on the
-  refs/heads/main branch).
+notes: Open-source, self-hosted (local/stdio) MCP server published by Cutover. Wraps the Cutover Core
+  REST API; tools below are the tool functions exposed by the public repository's src/cutover_mcp/tools/
+  modules (verified against the repo tree on the refs/heads/main branch).
 tools:
 - name: list_workspaces
   description: List workspaces available to the authenticated token
@@ -72,3 +70,9 @@ tools:
   description: Retrieve a single user
 - name: search_users
   description: Search users
+deployment:
+  mode: local-stdio
+  verified: searched
+  tools: 22
+  checked: '2026-08-12'
+  source: catalog MCP census
