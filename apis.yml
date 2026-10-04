@@ -54,7 +54,7 @@ tags:
 - Incident Management
 - Runbook Automation
 - Orchestration
-- Workflow-Automation
+- Workflow Automation
 - DevOps
 tags_raw:
 - Company
@@ -66,6 +66,7 @@ tags_raw:
 - Orchestration
 - Workflow Automation
 - DevOps
+- Workflow-Automation
 apis:
 - name: Cutover Core API
   description: 'The Cutover Core API is a RESTful, JSON:API-style interface for programmatically
