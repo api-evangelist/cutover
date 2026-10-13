@@ -1,0 +1,36 @@
+generated: '2026-10-13'
+method: searched
+checked:
+- https://aws.amazon.com/marketplace/
+marketplace_apps: []
+edges:
+- partner_name: AWS Marketplace
+  partner: amazon-web-services
+  partner_match: aggregator
+  type: marketplace
+  marketplace: aws-marketplace
+  channel: distribution
+  relationship: platform-app
+  direction: provider-built
+  evidence: https://aws.amazon.com/marketplace/seller-profile?id=1dd25840-bf29-4534-b190-579384bf7624
+  listing_count: 1
+  apps:
+  - Cutover Guided Cloud Migration Starter Package
+  seller_name: Cutover
+  detected_by: sweep-cloud-marketplaces.py
+  detected: '2026-10-13'
+- partner_name: AWS Marketplace
+  partner: amazon-web-services
+  partner_match: aggregator
+  type: marketplace
+  marketplace: aws-marketplace
+  channel: distribution
+  relationship: platform-app
+  direction: provider-built
+  evidence: https://aws.amazon.com/marketplace/seller-profile?id=a9768c6b-c44f-4d92-81d6-a2382d333178
+  listing_count: 1
+  apps:
+  - Cutover Guided Cloud Migration Starter Package
+  seller_name: Cutover
+  detected_by: sweep-cloud-marketplaces.py
+  detected: '2026-10-13'
